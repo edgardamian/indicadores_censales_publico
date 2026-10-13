@@ -2123,12 +2123,14 @@ body {
 @media (max-width: 900px) {
   .modal-kpi-summary {
     grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 480px) {
   .modal-kpi-summary {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
   }
 }
 
@@ -2743,20 +2745,254 @@ body {
     height: 36px !important;
     font-size: 1.15rem !important;
   }
+  /* ====================================================================
+     OPTIMIZACIÓN MÓVIL INTEGRAL: MODAL DE VER DETALLES / FICHA INDIVIDUAL
+     ==================================================================== */
+  .modal-backdrop {
+    padding: 0.4rem;
+  }
+
   .modal-dialog {
-    width: 96vw;
-    max-width: 96vw;
-    max-height: 94vh;
-    padding: 1.1rem;
-  }
-  .modal-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.65rem;
-  }
-  .modal-table-container {
-    overflow-x: auto;
+    width: 98vw;
+    max-width: 98vw;
+    max-height: 95vh;
+    padding: 0 !important;
+    border-radius: var(--radius-lg);
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-header {
+    padding: 0.85rem 1rem 0.75rem 1rem !important;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #f8faf9;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .modal-header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-mode-tabs {
+    display: flex;
+    flex: 1;
+    max-width: calc(100% - 40px);
+    padding: 2px;
+  }
+
+  .btn-modal-mode-tab {
+    flex: 1;
+    justify-content: center;
+    padding: 0.35rem 0.3rem;
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+
+  .modal-close-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .modal-header-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.25rem;
+  }
+
+  .modal-category-badge,
+  .modal-events-badge,
+  .modal-territory-badge {
+    font-size: 0.66rem;
+    padding: 0.15rem 0.45rem;
+  }
+
+  .modal-title {
+    font-size: 1.15rem !important;
+    line-height: 1.25;
+    margin-top: 0.15rem;
+  }
+
+  .modal-desc {
+    font-size: 0.76rem !important;
+    line-height: 1.35;
+    margin-top: 0.2rem;
+  }
+
+  .modal-body {
+    padding: 0.85rem 0.85rem 1.5rem 0.85rem !important;
+    gap: 0.85rem !important;
+  }
+
+  .modal-single-view {
+    gap: 0.85rem !important;
+  }
+
+  /* TOOLBAR DEL GRÁFICO EN MÓVIL: ESTRUCTURA LIMPIA DE 2 FILAS */
+  .modal-chart-toolbar {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    gap: 0.55rem !important;
+    align-items: center !important;
+    padding: 0.65rem 0.75rem !important;
+  }
+
+  .chart-type-switches {
+    grid-column: 1 / 2;
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .chart-export-actions {
+    grid-column: 2 / 3;
+    display: flex;
+    gap: 0.35rem;
+    justify-content: flex-end;
+  }
+
+  .modal-territory-switcher {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    width: 100%;
+    padding-top: 0.4rem;
+    border-top: 1px dashed rgba(203, 213, 225, 0.7);
+  }
+
+  .modal-territory-switcher .switcher-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .modal-territory-switcher .btn-territory-toggle {
+    flex: 1;
+    text-align: center;
+    padding: 0.35rem 0.45rem;
+    font-size: 0.72rem;
+  }
+
+  .btn-chart-type,
+  .btn-export {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.72rem;
+  }
+
+  /* CANVAS DE GRÁFICA COMPACTO */
+  .chart-canvas-container {
+    height: 235px !important;
+    padding: 0.65rem 0.4rem !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  /* KPIS DEL MODAL EN 2 COLUMNAS COMPACTAS */
+  .modal-kpi-summary {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+  .modal-kpi-box {
+    min-height: unset !important;
+    padding: 0.6rem 0.75rem !important;
+    border-radius: var(--radius-sm) !important;
+  }
+
+  .modal-kpi-box .label {
+    font-size: 0.64rem !important;
+    line-height: 1.2;
+    margin-bottom: 0.15rem;
+  }
+
+  .modal-kpi-box .val {
+    font-size: 1.15rem !important;
+    line-height: 1.1;
+    margin: 0.1rem 0;
+  }
+
+  .modal-kpi-box .sub {
+    font-size: 0.68rem !important;
+    line-height: 1.15;
+  }
+
+  /* NOTA METODOLÓGICA */
+  .modal-note-box {
+    padding: 0.65rem 0.85rem !important;
+    border-radius: var(--radius-sm) !important;
+  }
+
+  .note-box-title {
+    font-size: 0.72rem !important;
+  }
+
+  .note-box-text {
+    font-size: 0.76rem !important;
+    line-height: 1.35;
+  }
+
+  /* TABLAS CON SCROLL SUAVE TÁCTIL Y COLUMNAS NO APLASTADAS */
+  .modal-data-table-wrapper {
+    padding: 0.65rem !important;
+    border-radius: var(--radius-md) !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .table-title {
+    font-size: 0.82rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .historical-table {
+    min-width: 520px !important;
+    font-size: 0.74rem !important;
+  }
+
+  .historical-table th,
+  .historical-table td {
+    padding: 0.45rem 0.55rem !important;
+    white-space: nowrap !important;
+  }
+
+  .original-names-table {
+    min-width: 540px !important;
+  }
+
+  .orig-var-name-cell code {
+    font-size: 0.72rem !important;
+    padding: 0.2rem 0.4rem !important;
+  }
+
+  /* METADATOS TÉCNICOS */
+  .modal-metadata-card {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.6rem !important;
+    padding: 0.75rem !important;
+    border-radius: var(--radius-sm) !important;
+  }
+
+  .modal-metadata-card .metadata-col:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .metadata-col .meta-label {
+    font-size: 0.65rem !important;
+  }
+
+  .metadata-col .meta-value {
+    font-size: 0.78rem !important;
   }
 }
 
@@ -2777,10 +3013,6 @@ body {
   }
   .stat-block .stat-num {
     font-size: 0.95rem;
-  }
-  .modal-header-actions {
-    flex-direction: column;
-    align-items: stretch;
   }
   .btn-swap-vars {
     justify-content: center;
