@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Indicadores Censales Morelia 2010 - 2025 | IMPLAN Morelia</title>
+  <meta name="description"
+    content="Dashboard interactivo de indicadores sociodemográficos y censales de Morelia 2010-2025 con explorador faceted de variables y gráficos históricos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Raleway:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+  <!-- HEADER INSTITUCIONAL -->
+  <header class="implan-header">
+    <div class="header-overlay"></div>
+    <div class="header-container">
+      <div class="brand-group">
+        <img src="images/logos_header_transparente.png"
+          alt="Morelia H. Ayuntamiento | IMPLAN Morelia | Morelia en Datos" class="institutional-logos"
+          onerror="this.src='images/logos_header.png'">
+        <div class="title-block">
+          <span class="subtitle-badge">TABLERO INTERACTIVO DE INFORMACIÓN DEMOGRÁFICA</span>
+          <h1 class="main-title">EXPLORADOR DE INDICADORES CENSALES</h1>
+          <p class="dataset-meta">Serie Histórica del INEGI: Censo 2010 • Encuesta 2015 • Censo 2020 • Encuesta 2025
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- KPI SUMMARY STRIP -->
+  <section class="kpi-strip">
+    <div class="kpi-container">
+      <div class="kpi-card highlight">
+        <div class="kpi-icon">
+          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
+        <div class="kpi-info">
+          <span class="kpi-label">Población Total (2025)</span>
+          <span class="kpi-val" id="kpi-pob-total">920,863</span>
+          <span class="kpi-trend positive">▲ +26.3% vs 2010 (+191,584 hab.)</span>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">
+          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+        </div>
+        <div class="kpi-info">
+          <span class="kpi-label">Edad Promedio de la Población</span>
+          <span class="kpi-val" id="kpi-edad-promedio">32.8 años</span>
+          <span class="kpi-trend positive">▲ +5.8 años vs 2010 (Mediana INEGI)</span>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">
+          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+        </div>
+        <div class="kpi-info">
+          <span class="kpi-label">Viviendas Habitadas (2025)</span>
+          <span class="kpi-val" id="kpi-viv-total">290,136</span>
+          <span class="kpi-trend positive">▲ +52.4% vs 2010 (+99,702 viv.)</span>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">
+          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+          </svg>
+        </div>
+        <div class="kpi-info">
+          <span class="kpi-label">Viviendas con Agua (2025)</span>
+          <span class="kpi-val" id="kpi-viv-agua">286,451</span>
+          <span class="kpi-trend positive">▲ +65.2% vs 2010 (98.7% cobertura)</span>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">
+          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <rect x="4" y="3" width="16" height="16" rx="2" />
+            <path d="M4 11h16" />
+            <path d="M8 15h.01" />
+            <path d="M16 15h.01" />
+            <path d="M6 19v2" />
+            <path d="M18 19v2" />
+          </svg>
+        </div>
+        <div class="kpi-info">
+          <span class="kpi-label">Trabajadores en Transporte Público</span>
+          <span class="kpi-val" id="kpi-trab-tp">172,703</span>
+          <span class="kpi-trend positive">40.8% de trabajadores ocupados</span>
+        </div>
+      </div>
+      <div class="kpi-card summary-count">
+        <div class="kpi-icon">
+          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <line x1="18" y1="20" x2="18" y2="10" />
+            <line x1="12" y1="20" x2="12" y2="4" />
+            <line x1="6" y1="20" x2="6" y2="14" />
+          </svg>
+        </div>
+        <div class="kpi-info">
+          <span class="kpi-label">Catálogo de Variables</span>
+          <span class="kpi-val" id="kpi-total-vars">129</span>
+          <span class="kpi-sub">Indicadores estandarizados</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENEDOR PRINCIPAL: SIDEBAR FILTROS + CATÁLOGO -->
+  <main class="dashboard-layout">
+
+    <!-- SIDEBAR DE FILTROS (ESTILO TIENDA EN LÍNEA) -->
+    <aside class="filters-sidebar" id="filtersSidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title-group">
+          <span class="filter-icon">
+            <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="M4 21v-7" />
+              <path d="M4 10V3" />
+              <path d="M12 21v-9" />
+              <path d="M12 8V3" />
+              <path d="M20 21v-5" />
+              <path d="M20 12V3" />
+              <path d="M1 14h6" />
+              <path d="M9 8h6" />
+              <path d="M17 16h6" />
+            </svg>
+          </span>
+          <h2>Filtros del Catálogo</h2>
+        </div>
+        <button type="button" class="btn-reset-filters" id="btnResetFilters" title="Restablecer todos los filtros">
+          ↺ Limpiar
+        </button>
+      </div>
+
+      <!-- BUSCADOR EN TIEMPO REAL -->
+      <div class="filter-section search-section">
+        <label for="searchInput" class="filter-title">Buscar Variable</label>
+        <div class="search-box">
+          <span class="search-icon">
+            <svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+          <input type="text" id="searchInput" placeholder="Ej: internet, agua, 65 años, ocupada..." autocomplete="off">
+          <button type="button" id="clearSearchBtn" class="clear-search-btn" style="display: none;">✕</button>
+        </div>
+      </div>
+
+      <!-- SELECTOR DE ÁMBITO GEOGRÁFICO -->
+      <div class="filter-section">
+        <span class="filter-title">Ámbito Territorial</span>
+        <div class="territory-toggle">
+          <label class="territory-option" id="labelTerritoryMun">
+            <input type="radio" name="territoryRadio" value="mun" checked id="radioMun">
+            <span class="territory-pill">
+              <span class="icon">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M3 21h18" />
+                  <path d="M5 21V10l7-5 7 5v11" />
+                  <path d="M9 14h6" />
+                </svg>
+              </span>
+              <span class="text">Municipio de Morelia</span>
+              <span class="tag">4 eventos</span>
+            </span>
+          </label>
+          <label class="territory-option" id="labelTerritoryLoc">
+            <input type="radio" name="territoryRadio" value="loc" id="radioLoc">
+            <span class="territory-pill">
+              <span class="icon">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="4" y="2" width="16" height="20" rx="2" />
+                  <line x1="9" y1="6" x2="9" y2="6.01" />
+                  <line x1="15" y1="6" x2="15" y2="6.01" />
+                  <line x1="9" y1="10" x2="9" y2="10.01" />
+                  <line x1="15" y1="10" x2="15" y2="10.01" />
+                  <line x1="9" y1="14" x2="9" y2="14.01" />
+                  <line x1="15" y1="14" x2="15" y2="14.01" />
+                  <path d="M10 22v-4h4v4" />
+                </svg>
+              </span>
+              <span class="text">Ciudad de Morelia</span>
+              <span class="tag">3 eventos</span>
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <!-- FILTRO PRINCIPAL: DISPONIBILIDAD TEMPORAL (# DE EVENTOS) -->
+      <div class="filter-section">
+        <div class="filter-title-row">
+          <span class="filter-title">Disponibilidad Temporal</span>
+        </div>
+
+        <div class="facet-options" id="eventCountFilters">
+          <label class="facet-checkbox-label">
+            <input type="checkbox" name="filterEventCount" value="4" checked>
+            <span class="custom-checkbox"></span>
+            <span class="facet-name">
+              <span class="event-pill event-4">4 Eventos</span>
+              <span class="event-label-text">Serie Completa (2010 a 2025)</span>
+            </span>
+            <span class="facet-count" id="count-ev-4">12</span>
+          </label>
+
+          <label class="facet-checkbox-label">
+            <input type="checkbox" name="filterEventCount" value="3" checked>
+            <span class="custom-checkbox"></span>
+            <span class="facet-name">
+              <span class="event-pill event-3">3 Eventos</span>
+              <span class="event-label-text">Tres eventos censales</span>
+            </span>
+            <span class="facet-count" id="count-ev-3">35</span>
+          </label>
+
+          <label class="facet-checkbox-label">
+            <input type="checkbox" name="filterEventCount" value="2" checked>
+            <span class="custom-checkbox"></span>
+            <span class="facet-name">
+              <span class="event-pill event-2">2 Eventos</span>
+              <span class="event-label-text">Dos eventos censales</span>
+            </span>
+            <span class="facet-count" id="count-ev-2">16</span>
+          </label>
+
+          <label class="facet-checkbox-label">
+            <input type="checkbox" name="filterEventCount" value="1" checked>
+            <span class="custom-checkbox"></span>
+            <span class="facet-name">
+              <span class="event-pill event-1">1 Evento</span>
+              <span class="event-label-text">Exclusivas / Nuevas (2025)</span>
+            </span>
+            <span class="facet-count" id="count-ev-1">17</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- FILTRO POR EVENTOS ESPECÍFICOS PRESENTES -->
+      <div class="filter-section">
+        <span class="filter-title">Presencia en Censos / Encuestas</span>
+        <div class="year-badges-filter" id="yearCheckboxes">
+          <label class="year-filter-chip">
+            <input type="checkbox" name="filterYear" value="2010">
+            <span class="year-chip-box">Censo 2010</span>
+          </label>
+          <label class="year-filter-chip">
+            <input type="checkbox" name="filterYear" value="2015">
+            <span class="year-chip-box">Encuesta 2015</span>
+          </label>
+          <label class="year-filter-chip">
+            <input type="checkbox" name="filterYear" value="2020">
+            <span class="year-chip-box">Censo 2020</span>
+          </label>
+          <label class="year-filter-chip">
+            <input type="checkbox" name="filterYear" value="2025">
+            <span class="year-chip-box">Encuesta 2025</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- FILTRO POR SUBSISTEMAS DE INFORMACIÓN -->
+      <div class="filter-section">
+        <div class="filter-title-row">
+          <span class="filter-title">Subsistemas de Información</span>
+          <span class="facet-category-count" id="categoriesCount">5 subsistemas</span>
+        </div>
+        <div class="categories-filter-list" id="categoriesFilterList">
+          <!-- Generado dinámicamente por app.js con conteos -->
+        </div>
+      </div>
+
+      <!-- FILTRO POR SEXO -->
+      <div class="filter-section" id="sexFilterSection">
+        <div class="filter-title-row">
+          <span class="filter-title">Filtro por sexo</span>
+        </div>
+
+        <div class="sex-filter-options" id="sexFilterOptions">
+          <label class="facet-checkbox-label sex-option-label" data-sex="total">
+            <input type="checkbox" name="filterSex" value="total" checked>
+            <span class="custom-checkbox"></span>
+            <span class="facet-name">
+              <span class="sex-pill sex-total">Total Ambos Sexos</span>
+              <span class="event-label-text">Población total y grupos combinados</span>
+            </span>
+            <span class="facet-count" id="count-sex-total">22</span>
+          </label>
+
+          <label class="facet-checkbox-label sex-option-label" data-sex="mujeres">
+            <input type="checkbox" name="filterSex" value="mujeres" checked>
+            <span class="custom-checkbox"></span>
+            <span class="facet-name">
+              <span class="sex-pill sex-mujeres">Mujeres</span>
+              <span class="event-label-text">Población femenina y grupos quinquenales</span>
+            </span>
+            <span class="facet-count" id="count-sex-mujeres">21</span>
+          </label>
+
+          <label class="facet-checkbox-label sex-option-label" data-sex="hombres">
+            <input type="checkbox" name="filterSex" value="hombres" checked>
+            <span class="custom-checkbox"></span>
+            <span class="facet-name">
+              <span class="sex-pill sex-hombres">Hombres</span>
+              <span class="event-label-text">Población masculina y grupos quinquenales</span>
+            </span>
+            <span class="facet-count" id="count-sex-hombres">19</span>
+          </label>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ÁREA PRINCIPAL: CATÁLOGO DE VARIABLES -->
+    <section class="catalog-content">
+
+      <!-- TOOLBAR DE RESULTADOS Y ORDENAMIENTO -->
+      <div class="catalog-toolbar">
+        <div class="toolbar-left">
+          <button type="button" class="btn-toggle-sidebar" id="btnToggleSidebar">
+            <span>☰</span> Filtros
+          </button>
+          <div class="results-stats">
+            <span class="count-highlight" id="resultsCount">80</span>
+            <span class="text-muted" id="resultsTotalText">variables encontradas</span>
+          </div>
+        </div>
+
+        <div class="toolbar-center">
+          <button type="button" class="btn-open-comparator" id="btnOpenComparatorGlobal"
+            title="Abrir herramienta para comparar dos variables lado a lado">
+            <svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <rect x="2" y="3" width="8" height="18" rx="2" />
+              <rect x="14" y="3" width="8" height="18" rx="2" />
+            </svg>
+            <span>Comparar 2 Variables</span>
+          </button>
+        </div>
+
+        <div class="toolbar-right">
+          <!-- ORDENAMIENTO -->
+          <div class="sort-control">
+            <label for="sortSelect">Ordenar por:</label>
+            <select id="sortSelect">
+              <option value="value-desc" selected>Valor mayor más actual</option>
+              <option value="value-asc">Valor menor más actual</option>
+              <option value="growth-desc">Mayor crecimiento porcentual</option>
+              <option value="growth-asc">Menor crecimiento o decrecimiento</option>
+              <option value="events-desc">Mayor cobertura temporal</option>
+              <option value="events-asc">Menor cobertura temporal</option>
+              <option value="name-asc">Nombre (A - Z)</option>
+              <option value="name-desc">Nombre (Z - A)</option>
+              <option value="category-asc">Subsistema de Información (A - Z)</option>
+              <option value="category-desc">Subsistema de Información (Z - A)</option>
+            </select>
+          </div>
+
+          <!-- MODO DE VISTA -->
+          <div class="view-mode-toggle">
+            <button type="button" class="btn-view-mode active" id="btnViewGrid" title="Vista Cuadrícula">
+              ⊞
+            </button>
+            <button type="button" class="btn-view-mode" id="btnViewList" title="Vista Lista">
+              ☰
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHIPS DE FILTROS ACTIVOS -->
+      <div class="active-chips-container" id="activeChipsContainer">
+        <!-- Generado dinámicamente -->
+      </div>
+
+      <!-- GRILLA / CATÁLOGO DE TARJETAS -->
+      <div class="variables-grid" id="variablesGrid">
+        <!-- Generado dinámicamente por app.js -->
+      </div>
+
+      <!-- ESTADO VACÍO (SIN RESULTADOS) -->
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon">
+          <svg class="ui-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </div>
+        <h3>No se encontraron variables con los filtros seleccionados</h3>
+        <p>Prueba ajustando la búsqueda, seleccionando más eventos censales o limpiando los filtros aplicados.</p>
+        <button type="button" class="btn-primary" id="btnEmptyReset">Restablecer todos los filtros</button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- MODAL DE VISUALIZACIÓN DETALLADA Y GRÁFICA INTERACTIVA / COMPARADOR -->
+  <div class="modal-backdrop" id="chartModal" style="display: none;">
+    <div class="modal-dialog" id="modalDialog">
+      <div class="modal-header">
+
+        <!-- PESTAÑAS DE MODO: INDIVIDUAL VS COMPARADOR -->
+        <div class="modal-header-nav">
+          <div class="modal-mode-tabs">
+            <button type="button" class="btn-modal-mode-tab active" id="btnTabSingleView">
+              <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+              <span>Ficha Individual</span>
+            </button>
+            <button type="button" class="btn-modal-mode-tab" id="btnTabCompareView">
+              <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <rect x="2" y="3" width="8" height="18" rx="2" />
+                <rect x="14" y="3" width="8" height="18" rx="2" />
+              </svg>
+              <span>Comparar 2 Variables</span>
+            </button>
+          </div>
+          <div class="modal-header-actions">
+            <button type="button" class="btn-swap-vars" id="btnSwapVars" style="display: none;"
+              title="Intercambiar variable izquierda con derecha">
+              <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <polyline points="7 16 3 12 7 8" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <polyline points="17 8 21 12 17 16" />
+              </svg>
+              <span>Intercambiar Lados</span>
+            </button>
+            <button type="button" class="modal-close-btn" id="modalCloseBtn" title="Cerrar ventana (Esc)">✕</button>
+          </div>
+        </div>
+
+        <!-- INFO HEADER: MODO INDIVIDUAL -->
+        <div id="singleHeaderInfo">
+          <div class="modal-header-meta">
+            <div class="modal-category-badge" id="modalCategory">Demografía</div>
+            <div class="modal-events-badge" id="modalEventsBadge">4 Eventos</div>
+            <div class="modal-territory-badge" id="modalTerritoryBadge">Municipio de Morelia</div>
+          </div>
+          <h2 class="modal-title" id="modalTitle">Población total</h2>
+          <p class="modal-desc" id="modalDesc">Descripción técnica de la variable</p>
+        </div>
+
+        <!-- INFO HEADER: MODO COMPARADOR -->
+        <div id="compareHeaderInfo" style="display: none;">
+          <div class="compare-title-banner">
+            <h2 class="modal-title" style="color: #38bdf8; font-size: 1.35rem;">
+              Comparador Censal: Morelia 2010 - 2025
+            </h2>
+            <p class="modal-desc" style="margin-top: 0.25rem;">
+              Compara dos variables censales de manera paralela con sus gráficos, notas de compatibilidad, indicadores y
+              trazabilidad por año.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- VISTA 1: FICHA INDIVIDUAL (SINGLE VIEW) -->
+        <div id="modalSingleView" class="modal-single-view">
+          <!-- TOOLBAR DE CONTROLES DEL GRÁFICO -->
+          <div class="modal-chart-toolbar">
+            <div class="chart-type-switches">
+              <button type="button" class="btn-chart-type active" id="btnChartLine">
+                <svg class="ui-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+                <span>Línea</span>
+              </button>
+              <button type="button" class="btn-chart-type" id="btnChartBar">
+                <svg class="ui-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <line x1="18" y1="20" x2="18" y2="10" />
+                  <line x1="12" y1="20" x2="12" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="14" />
+                </svg>
+                <span>Barras</span>
+              </button>
+            </div>
+
+            <div class="modal-territory-switcher">
+              <span class="switcher-label">Ámbito:</span>
+              <button type="button" class="btn-territory-toggle active" id="btnModalMun">Municipio</button>
+              <button type="button" class="btn-territory-toggle" id="btnModalLoc">Ciudad de Morelia</button>
+            </div>
+
+            <div class="chart-export-actions">
+              <button type="button" class="btn-export" id="btnDownloadChartPng"
+                title="Descargar imagen PNG de la gráfica">
+                <svg class="ui-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <polyline points="21 15 16 10 5 21" />
+                </svg>
+                <span>PNG</span>
+              </button>
+              <button type="button" class="btn-export" id="btnExportDataCsv" title="Descargar datos en formato CSV">
+                <svg class="ui-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span>CSV</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- CONTENEDOR DEL CANVAS DE CHART.JS -->
+          <div class="chart-canvas-container">
+            <canvas id="modalChartCanvas"></canvas>
+          </div>
+
+          <!-- KPI SUMMARY EN MODAL -->
+          <div class="modal-kpi-summary" id="modalKpiSummary">
+            <!-- Tarjetas dinámicas de último dato, dato base, crecimiento total y TCMA -->
+          </div>
+
+          <!-- NOTA METODOLOGICA Y COMPATIBILIDAD ENTRE CENSOS -->
+          <div class="modal-note-box" id="modalNoteBox" style="display: none;">
+            <div class="note-box-title">
+              <span class="note-icon">
+                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="16" x2="12" y2="12" />
+                  <line x1="12" y1="8" x2="12.01" y2="8" />
+                </svg>
+              </span>
+              <strong>Nota Metodológica y Compatibilidad de Fuentes:</strong>
+            </div>
+            <p class="note-box-text" id="modalCompatibilityNote"></p>
+          </div>
+
+          <!-- TABLA DE DATOS HISTÓRICOS -->
+          <div class="modal-data-table-wrapper">
+            <h4 class="table-title">Serie Histórica Registrada</h4>
+            <table class="historical-table" id="modalDataTable">
+              <thead>
+                <tr>
+                  <th>Año</th>
+                  <th>Evento INEGI</th>
+                  <th>Ámbito</th>
+                  <th class="text-right">Valor Estandarizado</th>
+                  <th class="text-right">Cambio Absoluto</th>
+                  <th class="text-right">Crecimiento (%)</th>
+                  <th class="text-right">TCMA Anual</th>
+                </tr>
+              </thead>
+              <tbody id="modalTableBody">
+                <!-- Filas dinámicas -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- TABLA DE NOMBRES ORIGINALES DE LA VARIABLE POR AÑO (INEGI) -->
+          <div class="modal-data-table-wrapper modal-var-names-wrapper" style="margin-top: 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <h4 class="table-title" style="margin-bottom: 0;">Nombre Original de la Variable en la Fuente Oficial por
+                Año</h4>
+              <span class="event-tag-pill" style="font-size: 0.72rem; color: #38bdf8;">Trazabilidad INEGI</span>
+            </div>
+            <table class="historical-table original-names-table" id="modalVarNamesTable">
+              <thead>
+                <tr>
+                  <th style="width: 75px; text-align: center;">Año</th>
+                  <th style="width: 230px;">Evento Censal INEGI</th>
+                  <th>Nombre Original del Campo / Tabulado en la Fuente</th>
+                  <th style="width: 150px; text-align: center;">Estatus en Selección</th>
+                </tr>
+              </thead>
+              <tbody id="modalVarNamesTableBody">
+                <!-- Filas dinámicas generadas en app.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- FICHA TÉCNICA Y METADATOS -->
+          <div class="modal-metadata-card">
+            <div class="metadata-col">
+              <span class="meta-label">Unidad de Medida</span>
+              <span class="meta-value" id="modalUnit">Personas</span>
+            </div>
+            <div class="metadata-col">
+              <span class="meta-label">Tipo de Indicador</span>
+              <span class="meta-value" id="modalType">Conteo Absoluto Estandarizado</span>
+            </div>
+            <div class="metadata-col">
+              <span class="meta-label">Cobertura Temporal</span>
+              <span class="meta-value" id="modalYears">2010, 2015, 2020, 2025</span>
+            </div>
+            <div class="metadata-col">
+              <span class="meta-label">Fuente Oficial</span>
+              <span class="meta-value">INEGI (Censos 2010, 2020 / EIC 2015, 2025)</span>
+            </div>
+          </div>
+
+          <!-- BOTÓN INVITACIÓN A COMPARAR DESDE LA FICHA INDIVIDUAL -->
+          <div class="modal-bottom-compare-cta" style="margin-top: 1.5rem; text-align: center;">
+            <button type="button" class="btn-compare-cta" id="btnLaunchCompareFromSingle">
+              <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <rect x="2" y="3" width="8" height="18" rx="2" />
+                <rect x="14" y="3" width="8" height="18" rx="2" />
+              </svg>
+              <span>Comparar esta variable con otra en vista paralela lado a lado</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- VISTA 2: MODO COMPARADOR (SIDE-BY-SIDE VIEW) -->
+        <div id="modalCompareView" class="modal-compare-view" style="display: none;">
+          <div class="modal-compare-grid">
+            <!-- COLUMNA IZQUIERDA (VARIABLE 1) -->
+            <div class="compare-column compare-column-left" id="compareColLeft">
+              <!-- Renderizado dinámicamente -->
+            </div>
+
+            <!-- COLUMNA DERECHA (VARIABLE 2) -->
+            <div class="compare-column compare-column-right" id="compareColRight">
+              <!-- Renderizado dinámicamente -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <span class="footer-note">Instituto Municipal de Planeación de Morelia (IMPLAN) • Morelia en Datos</span>
+        <button type="button" class="btn-secondary" id="modalFooterClose">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/chart.umd.min.js"></script>
+  <script src="js/datos_dashboard.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
