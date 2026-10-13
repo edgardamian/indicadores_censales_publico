@@ -153,10 +153,18 @@
           </span>
           <h2>Filtros del Catálogo</h2>
         </div>
-        <button type="button" class="btn-reset-filters" id="btnResetFilters" title="Restablecer todos los filtros">
-          ↺ Limpiar
-        </button>
+        <div class="sidebar-header-actions">
+          <button type="button" class="btn-reset-filters" id="btnResetFilters" title="Restablecer todos los filtros">
+            ↺ Limpiar
+          </button>
+          <button type="button" class="btn-close-sidebar" id="btnCloseSidebar" title="Cerrar panel de filtros" aria-label="Cerrar filtros">
+            ✕
+          </button>
+        </div>
       </div>
+
+      <!-- CONTENEDOR CON SCROLL DE SECCIONES DE FILTROS -->
+      <div class="sidebar-scroll-content">
 
       <!-- BUSCADOR EN TIEMPO REAL -->
       <div class="filter-section search-section">
@@ -338,7 +346,20 @@
         </div>
       </div>
 
+      </div><!-- fin .sidebar-scroll-content -->
+
+      <!-- PIE MÓVIL DEL SIDEBAR -->
+      <div class="sidebar-footer-mobile">
+        <button type="button" class="btn-apply-filters-mobile" id="btnApplyFiltersMobile" title="Aplicar filtros y cerrar panel">
+          <span class="btn-apply-text">Ver <strong id="mobileCountBadge">80</strong> variables</span>
+          <span class="btn-apply-action">Cerrar ✕</span>
+        </button>
+      </div>
+
     </aside>
+
+    <!-- BACKDROP MÓVIL PARA CERRAR FILTROS -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
     <!-- ÁREA PRINCIPAL: CATÁLOGO DE VARIABLES -->
     <section class="catalog-content">
@@ -346,8 +367,9 @@
       <!-- TOOLBAR DE RESULTADOS Y ORDENAMIENTO -->
       <div class="catalog-toolbar">
         <div class="toolbar-left">
-          <button type="button" class="btn-toggle-sidebar" id="btnToggleSidebar">
-            <span>☰</span> Filtros
+          <button type="button" class="btn-toggle-sidebar" id="btnToggleSidebar" aria-label="Abrir o cerrar filtros">
+            <span class="btn-toggle-icon">☰</span>
+            <span class="btn-toggle-text">Filtros</span>
           </button>
           <div class="results-stats">
             <span class="count-highlight" id="resultsCount">80</span>
