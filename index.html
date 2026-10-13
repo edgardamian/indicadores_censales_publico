@@ -133,8 +133,49 @@
   <!-- CONTENEDOR PRINCIPAL: SIDEBAR FILTROS + CATÁLOGO -->
   <main class="dashboard-layout" id="dashboardLayout">
 
-    <!-- SIDEBAR DE FILTROS (ESTILO TIENDA EN LÍNEA) -->
-    <aside class="filters-sidebar" id="filtersSidebar">
+    <!-- COLUMNA LATERAL: BUSCADOR SEPARADO + FILTROS DEL CATÁLOGO -->
+    <div class="sidebar-column" id="sidebarColumn">
+
+      <!-- TARJETA INDEPENDIENTE DEL BUSCADOR (ARRIBA DE FILTROS DEL CATÁLOGO) -->
+      <div class="search-standalone-card" id="searchStandaloneCard">
+        <div class="search-card-header">
+          <div class="search-card-title-group">
+            <span class="search-title-icon">
+              <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.2">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </span>
+            <h3>Buscar Variable</h3>
+          </div>
+          <span class="search-badge-live">En vivo</span>
+        </div>
+
+        <div class="search-box">
+          <span class="search-icon">
+            <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+          <input type="text" id="searchInput" placeholder="Ej: agua, internet, 65 años, ocupada..." autocomplete="off">
+          <button type="button" id="clearSearchBtn" class="clear-search-btn" style="display: none;"
+            title="Limpiar búsqueda">✕</button>
+        </div>
+
+        <div class="search-quick-tags">
+          <span class="quick-tag-label">Sugeridos:</span>
+          <button type="button" class="btn-quick-tag" data-query="agua">Agua</button>
+          <button type="button" class="btn-quick-tag" data-query="internet">Internet</button>
+          <button type="button" class="btn-quick-tag" data-query="poblacion">Población</button>
+          <button type="button" class="btn-quick-tag" data-query="65 años">65+ años</button>
+        </div>
+      </div>
+
+      <!-- SIDEBAR DE FILTROS (ESTILO TIENDA EN LÍNEA) -->
+      <aside class="filters-sidebar" id="filtersSidebar">
       <div class="sidebar-header">
         <div class="sidebar-title-group">
           <span class="filter-icon">
@@ -339,32 +380,16 @@
           <span class="btn-apply-action">Cerrar ✕</span>
         </button>
       </div>
-
+ 
     </aside>
+
+    </div><!-- fin .sidebar-column -->
 
     <!-- BACKDROP MÓVIL PARA CERRAR FILTROS -->
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
     <!-- ÁREA PRINCIPAL: CATÁLOGO DE VARIABLES -->
     <section class="catalog-content">
-
-      <!-- BUSCADOR PRINCIPAL DE VARIABLES (EXTERNO A LOS FILTROS - SIEMPRE VISIBLE) -->
-      <div class="catalog-search-wrapper">
-        <div class="catalog-search-box">
-          <span class="search-icon">
-            <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.2">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </span>
-          <input type="text" id="searchInput"
-            placeholder="Buscar variables en tiempo real (ej. agua, población, internet, 65 años, escolaridad, jefatura...)"
-            autocomplete="off">
-          <button type="button" id="clearSearchBtn" class="clear-search-btn" style="display: none;"
-            title="Limpiar búsqueda">✕</button>
-        </div>
-      </div>
 
       <!-- TOOLBAR DE RESULTADOS Y ORDENAMIENTO -->
       <div class="catalog-toolbar">
