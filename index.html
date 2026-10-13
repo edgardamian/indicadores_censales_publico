@@ -25,7 +25,7 @@
           alt="Morelia H. Ayuntamiento | IMPLAN Morelia | Morelia en Datos" class="institutional-logos"
           onerror="this.src='images/logos_header.png'">
         <div class="title-block">
-          <span class="subtitle-badge">TABLERO INTERACTIVO DE INFORMACIÓN DEMOGRÁFICA</span>
+          <span class="subtitle-badge">TABLERO INTERACTIVO DE INFORMACIÓN SOCIODEMOGRÁFICA Y DE VIVIENDA</span>
           <h1 class="main-title">EXPLORADOR DE INDICADORES CENSALES</h1>
           <p class="dataset-meta">Serie Histórica del INEGI: Censo 2010 • Encuesta 2015 • Censo 2020 • Encuesta 2025
           </p>
@@ -34,101 +34,7 @@
     </div>
   </header>
 
-  <!-- KPI SUMMARY STRIP -->
-  <section class="kpi-strip">
-    <div class="kpi-container">
-      <div class="kpi-card highlight">
-        <div class="kpi-icon">
-          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-          </svg>
-        </div>
-        <div class="kpi-info">
-          <span class="kpi-label">Población Total (2025)</span>
-          <span class="kpi-val" id="kpi-pob-total">920,863</span>
-          <span class="kpi-trend positive">▲ +26.3% vs 2010 (+191,584 hab.)</span>
-        </div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon">
-          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <circle cx="12" cy="12" r="10" />
-            <polyline points="12 6 12 12 16 14" />
-          </svg>
-        </div>
-        <div class="kpi-info">
-          <span class="kpi-label">Edad Promedio de la Población</span>
-          <span class="kpi-val" id="kpi-edad-promedio">32.8 años</span>
-          <span class="kpi-trend positive">▲ +5.8 años vs 2010 (Mediana INEGI)</span>
-        </div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon">
-          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <polyline points="9 22 9 12 15 12 15 22" />
-          </svg>
-        </div>
-        <div class="kpi-info">
-          <span class="kpi-label">Viviendas Habitadas (2025)</span>
-          <span class="kpi-val" id="kpi-viv-total">290,136</span>
-          <span class="kpi-trend positive">▲ +52.4% vs 2010 (+99,702 viv.)</span>
-        </div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon">
-          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-          </svg>
-        </div>
-        <div class="kpi-info">
-          <span class="kpi-label">Viviendas con Agua (2025)</span>
-          <span class="kpi-val" id="kpi-viv-agua">286,451</span>
-          <span class="kpi-trend positive">▲ +65.2% vs 2010 (98.7% cobertura)</span>
-        </div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon">
-          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <rect x="4" y="3" width="16" height="16" rx="2" />
-            <path d="M4 11h16" />
-            <path d="M8 15h.01" />
-            <path d="M16 15h.01" />
-            <path d="M6 19v2" />
-            <path d="M18 19v2" />
-          </svg>
-        </div>
-        <div class="kpi-info">
-          <span class="kpi-label">Trabajadores en Transporte Público</span>
-          <span class="kpi-val" id="kpi-trab-tp">172,703</span>
-          <span class="kpi-trend positive">40.8% de trabajadores ocupados</span>
-        </div>
-      </div>
-      <div class="kpi-card summary-count">
-        <div class="kpi-icon">
-          <svg class="ui-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <line x1="18" y1="20" x2="18" y2="10" />
-            <line x1="12" y1="20" x2="12" y2="4" />
-            <line x1="6" y1="20" x2="6" y2="14" />
-          </svg>
-        </div>
-        <div class="kpi-info">
-          <span class="kpi-label">Catálogo de Variables</span>
-          <span class="kpi-val" id="kpi-total-vars">129</span>
-          <span class="kpi-sub">Indicadores estandarizados</span>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- CONTENEDOR PRINCIPAL: SIDEBAR FILTROS + CATÁLOGO -->
   <main class="dashboard-layout" id="dashboardLayout">
@@ -364,7 +270,6 @@
         </div>
         <button type="button" class="btn-toggle-carousel" id="btnToggleCarousel"
           title="Activar o desactivar carrusel continuo de indicadores">
-          <span class="carousel-btn-icon">🎠</span>
           <span class="carousel-btn-text">Carrusel de Variables</span>
         </button>
       </div>
