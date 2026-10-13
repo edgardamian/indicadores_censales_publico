@@ -131,7 +131,7 @@
   </section>
 
   <!-- CONTENEDOR PRINCIPAL: SIDEBAR FILTROS + CATÁLOGO -->
-  <main class="dashboard-layout">
+  <main class="dashboard-layout" id="dashboardLayout">
 
     <!-- SIDEBAR DE FILTROS (ESTILO TIENDA EN LÍNEA) -->
     <aside class="filters-sidebar" id="filtersSidebar">
@@ -165,22 +165,6 @@
 
       <!-- CONTENEDOR CON SCROLL DE SECCIONES DE FILTROS -->
       <div class="sidebar-scroll-content">
-
-      <!-- BUSCADOR EN TIEMPO REAL -->
-      <div class="filter-section search-section">
-        <label for="searchInput" class="filter-title">Buscar Variable</label>
-        <div class="search-box">
-          <span class="search-icon">
-            <svg class="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </span>
-          <input type="text" id="searchInput" placeholder="Ej: internet, agua, 65 años, ocupada..." autocomplete="off">
-          <button type="button" id="clearSearchBtn" class="clear-search-btn" style="display: none;">✕</button>
-        </div>
-      </div>
 
       <!-- SELECTOR DE ÁMBITO GEOGRÁFICO -->
       <div class="filter-section">
@@ -363,6 +347,24 @@
 
     <!-- ÁREA PRINCIPAL: CATÁLOGO DE VARIABLES -->
     <section class="catalog-content">
+
+      <!-- BUSCADOR PRINCIPAL DE VARIABLES (EXTERNO A LOS FILTROS - SIEMPRE VISIBLE) -->
+      <div class="catalog-search-wrapper">
+        <div class="catalog-search-box">
+          <span class="search-icon">
+            <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </span>
+          <input type="text" id="searchInput"
+            placeholder="Buscar variables en tiempo real (ej. agua, población, internet, 65 años, escolaridad, jefatura...)"
+            autocomplete="off">
+          <button type="button" id="clearSearchBtn" class="clear-search-btn" style="display: none;"
+            title="Limpiar búsqueda">✕</button>
+        </div>
+      </div>
 
       <!-- TOOLBAR DE RESULTADOS Y ORDENAMIENTO -->
       <div class="catalog-toolbar">
