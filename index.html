@@ -133,17 +133,8 @@
   <!-- CONTENEDOR PRINCIPAL: SIDEBAR FILTROS + CATÁLOGO -->
   <main class="dashboard-layout" id="dashboardLayout">
 
-    <!-- COLUMNA LATERAL: BUSCADOR SEPARADO + FILTROS DEL CATÁLOGO -->
+    <!-- COLUMNA LATERAL: FILTROS DEL CATÁLOGO -->
     <div class="sidebar-column" id="sidebarColumn">
-
-      <!-- TARJETA INDEPENDIENTE DEL BUSCADOR (ARRIBA DE FILTROS DEL CATÁLOGO) -->
-      <div class="search-standalone-card" id="searchStandaloneCard">
-        <div class="search-box">
-          <input type="text" id="searchInput" placeholder="Busca: Agua, Internet, escrituras." autocomplete="off">
-          <button type="button" id="clearSearchBtn" class="clear-search-btn" style="display: none;"
-            title="Limpiar búsqueda">✕</button>
-        </div>
-      </div>
 
       <!-- SIDEBAR DE FILTROS (ESTILO TIENDA EN LÍNEA) -->
       <aside class="filters-sidebar" id="filtersSidebar">
@@ -363,6 +354,37 @@
 
     <!-- ÁREA PRINCIPAL: CATÁLOGO DE VARIABLES -->
     <section class="catalog-content">
+
+      <!-- BARRA SUPERIOR: BUSCADOR + BOTÓN ACTIVAR CARRUSEL -->
+      <div class="catalog-search-row" id="catalogSearchRow">
+        <div class="search-box-wrapper">
+          <input type="text" id="searchInput" placeholder="Busca: Agua, Internet, escrituras." autocomplete="off">
+          <button type="button" id="clearSearchBtn" class="clear-search-btn" style="display: none;"
+            title="Limpiar búsqueda">✕</button>
+        </div>
+        <button type="button" class="btn-toggle-carousel" id="btnToggleCarousel"
+          title="Activar o desactivar carrusel continuo de indicadores">
+          <span class="carousel-btn-icon">🎠</span>
+          <span class="carousel-btn-text">Carrusel de Variables</span>
+        </button>
+      </div>
+
+      <!-- CONTENEDOR DEL CARRUSEL EN MOVIMIENTO (DESACTIVADO POR DEFECTO) -->
+      <div class="variables-carousel-container" id="variablesCarouselContainer" style="display: none;">
+        <div class="carousel-header">
+          <div class="carousel-title-group">
+            <span class="carousel-live-dot"></span>
+            <span class="carousel-title">Indicadores Censales en Movimiento</span>
+            <span class="carousel-hint">Pasa el cursor o mantén presionado para pausar • Clic para ver detalle</span>
+          </div>
+          <button type="button" class="btn-close-carousel" id="btnCloseCarousel" title="Cerrar carrusel">✕</button>
+        </div>
+        <div class="carousel-marquee-wrapper">
+          <div class="carousel-marquee-track" id="carouselMarqueeTrack">
+            <!-- Tarjetas inyectadas dinámicamente -->
+          </div>
+        </div>
+      </div>
 
       <!-- TOOLBAR DE RESULTADOS Y ORDENAMIENTO -->
       <div class="catalog-toolbar">
