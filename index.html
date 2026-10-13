@@ -138,250 +138,223 @@
 
       <!-- TARJETA INDEPENDIENTE DEL BUSCADOR (ARRIBA DE FILTROS DEL CATÁLOGO) -->
       <div class="search-standalone-card" id="searchStandaloneCard">
-        <div class="search-card-header">
-          <div class="search-card-title-group">
-            <span class="search-title-icon">
-              <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2.2">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-            </span>
-            <h3>Buscar Variable</h3>
-          </div>
-          <span class="search-badge-live">En vivo</span>
-        </div>
-
         <div class="search-box">
-          <span class="search-icon">
-            <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </span>
-          <input type="text" id="searchInput" placeholder="Ej: agua, internet, 65 años, ocupada..." autocomplete="off">
+          <input type="text" id="searchInput" placeholder="Busca: Agua, Internet, escrituras." autocomplete="off">
           <button type="button" id="clearSearchBtn" class="clear-search-btn" style="display: none;"
             title="Limpiar búsqueda">✕</button>
-        </div>
-
-        <div class="search-quick-tags">
-          <span class="quick-tag-label">Sugeridos:</span>
-          <button type="button" class="btn-quick-tag" data-query="agua">Agua</button>
-          <button type="button" class="btn-quick-tag" data-query="internet">Internet</button>
-          <button type="button" class="btn-quick-tag" data-query="poblacion">Población</button>
-          <button type="button" class="btn-quick-tag" data-query="65 años">65+ años</button>
         </div>
       </div>
 
       <!-- SIDEBAR DE FILTROS (ESTILO TIENDA EN LÍNEA) -->
       <aside class="filters-sidebar" id="filtersSidebar">
-      <div class="sidebar-header">
-        <div class="sidebar-title-group">
-          <span class="filter-icon">
-            <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2">
-              <path d="M4 21v-7" />
-              <path d="M4 10V3" />
-              <path d="M12 21v-9" />
-              <path d="M12 8V3" />
-              <path d="M20 21v-5" />
-              <path d="M20 12V3" />
-              <path d="M1 14h6" />
-              <path d="M9 8h6" />
-              <path d="M17 16h6" />
-            </svg>
-          </span>
-          <h2>Filtros del Catálogo</h2>
+        <div class="sidebar-header">
+          <div class="sidebar-title-group">
+            <span class="filter-icon">
+              <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M4 21v-7" />
+                <path d="M4 10V3" />
+                <path d="M12 21v-9" />
+                <path d="M12 8V3" />
+                <path d="M20 21v-5" />
+                <path d="M20 12V3" />
+                <path d="M1 14h6" />
+                <path d="M9 8h6" />
+                <path d="M17 16h6" />
+              </svg>
+            </span>
+            <h2>Filtros del Catálogo</h2>
+          </div>
+          <div class="sidebar-header-actions">
+            <button type="button" class="btn-reset-filters" id="btnResetFilters" title="Restablecer todos los filtros">
+              ↺ Limpiar
+            </button>
+            <button type="button" class="btn-close-sidebar" id="btnCloseSidebar" title="Cerrar panel de filtros"
+              aria-label="Cerrar filtros">
+              ✕
+            </button>
+          </div>
         </div>
-        <div class="sidebar-header-actions">
-          <button type="button" class="btn-reset-filters" id="btnResetFilters" title="Restablecer todos los filtros">
-            ↺ Limpiar
+
+        <!-- CONTENEDOR CON SCROLL DE SECCIONES DE FILTROS -->
+        <div class="sidebar-scroll-content">
+
+          <!-- SELECTOR DE ÁMBITO GEOGRÁFICO -->
+          <div class="filter-section">
+            <span class="filter-title">Ámbito Territorial</span>
+            <div class="territory-toggle">
+              <label class="territory-option" id="labelTerritoryMun">
+                <input type="radio" name="territoryRadio" value="mun" checked id="radioMun">
+                <span class="territory-pill">
+                  <span class="icon">
+                    <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <path d="M3 21h18" />
+                      <path d="M5 21V10l7-5 7 5v11" />
+                      <path d="M9 14h6" />
+                    </svg>
+                  </span>
+                  <span class="text">Municipio de Morelia</span>
+                  <span class="tag">4 eventos</span>
+                </span>
+              </label>
+              <label class="territory-option" id="labelTerritoryLoc">
+                <input type="radio" name="territoryRadio" value="loc" id="radioLoc">
+                <span class="territory-pill">
+                  <span class="icon">
+                    <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <rect x="4" y="2" width="16" height="20" rx="2" />
+                      <line x1="9" y1="6" x2="9" y2="6.01" />
+                      <line x1="15" y1="6" x2="15" y2="6.01" />
+                      <line x1="9" y1="10" x2="9" y2="10.01" />
+                      <line x1="15" y1="10" x2="15" y2="10.01" />
+                      <line x1="9" y1="14" x2="9" y2="14.01" />
+                      <line x1="15" y1="14" x2="15" y2="14.01" />
+                      <path d="M10 22v-4h4v4" />
+                    </svg>
+                  </span>
+                  <span class="text">Ciudad de Morelia</span>
+                  <span class="tag">3 eventos</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- FILTRO PRINCIPAL: DISPONIBILIDAD TEMPORAL (# DE EVENTOS) -->
+          <div class="filter-section">
+            <div class="filter-title-row">
+              <span class="filter-title">Disponibilidad Temporal</span>
+            </div>
+
+            <div class="facet-options" id="eventCountFilters">
+              <label class="facet-checkbox-label">
+                <input type="checkbox" name="filterEventCount" value="4" checked>
+                <span class="custom-checkbox"></span>
+                <span class="facet-name">
+                  <span class="event-pill event-4">4 Eventos</span>
+                  <span class="event-label-text">Serie Completa (2010 a 2025)</span>
+                </span>
+                <span class="facet-count" id="count-ev-4">12</span>
+              </label>
+
+              <label class="facet-checkbox-label">
+                <input type="checkbox" name="filterEventCount" value="3" checked>
+                <span class="custom-checkbox"></span>
+                <span class="facet-name">
+                  <span class="event-pill event-3">3 Eventos</span>
+                  <span class="event-label-text">Tres eventos censales</span>
+                </span>
+                <span class="facet-count" id="count-ev-3">35</span>
+              </label>
+
+              <label class="facet-checkbox-label">
+                <input type="checkbox" name="filterEventCount" value="2" checked>
+                <span class="custom-checkbox"></span>
+                <span class="facet-name">
+                  <span class="event-pill event-2">2 Eventos</span>
+                  <span class="event-label-text">Dos eventos censales</span>
+                </span>
+                <span class="facet-count" id="count-ev-2">16</span>
+              </label>
+
+              <label class="facet-checkbox-label">
+                <input type="checkbox" name="filterEventCount" value="1" checked>
+                <span class="custom-checkbox"></span>
+                <span class="facet-name">
+                  <span class="event-pill event-1">1 Evento</span>
+                  <span class="event-label-text">Exclusivas / Nuevas (2025)</span>
+                </span>
+                <span class="facet-count" id="count-ev-1">17</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- FILTRO POR EVENTOS ESPECÍFICOS PRESENTES -->
+          <div class="filter-section">
+            <span class="filter-title">Censos / Encuestas</span>
+            <div class="year-badges-filter" id="yearCheckboxes">
+              <label class="year-filter-chip">
+                <input type="checkbox" name="filterYear" value="2010">
+                <span class="year-chip-box">Censo 2010</span>
+              </label>
+              <label class="year-filter-chip">
+                <input type="checkbox" name="filterYear" value="2015">
+                <span class="year-chip-box">Encuesta 2015</span>
+              </label>
+              <label class="year-filter-chip">
+                <input type="checkbox" name="filterYear" value="2020">
+                <span class="year-chip-box">Censo 2020</span>
+              </label>
+              <label class="year-filter-chip">
+                <input type="checkbox" name="filterYear" value="2025">
+                <span class="year-chip-box">Encuesta 2025</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- FILTRO POR SUBSISTEMAS DE INFORMACIÓN -->
+          <div class="filter-section">
+            <div class="filter-title-row">
+              <span class="filter-title">Subsistemas de Información</span>
+              <span class="facet-category-count" id="categoriesCount">5 subsistemas</span>
+            </div>
+            <div class="categories-filter-list" id="categoriesFilterList">
+              <!-- Generado dinámicamente por app.js con conteos -->
+            </div>
+          </div>
+
+          <!-- FILTRO POR SEXO -->
+          <div class="filter-section" id="sexFilterSection">
+            <div class="filter-title-row">
+              <span class="filter-title">Filtro por sexo</span>
+            </div>
+
+            <div class="sex-filter-options" id="sexFilterOptions">
+              <label class="facet-checkbox-label sex-option-label" data-sex="total">
+                <input type="checkbox" name="filterSex" value="total" checked>
+                <span class="custom-checkbox"></span>
+                <span class="facet-name">
+                  <span class="sex-pill sex-total">Total Ambos Sexos</span>
+                  <span class="event-label-text">Población total y grupos combinados</span>
+                </span>
+                <span class="facet-count" id="count-sex-total">22</span>
+              </label>
+
+              <label class="facet-checkbox-label sex-option-label" data-sex="mujeres">
+                <input type="checkbox" name="filterSex" value="mujeres" checked>
+                <span class="custom-checkbox"></span>
+                <span class="facet-name">
+                  <span class="sex-pill sex-mujeres">Mujeres</span>
+                  <span class="event-label-text">Población femenina y grupos quinquenales</span>
+                </span>
+                <span class="facet-count" id="count-sex-mujeres">21</span>
+              </label>
+
+              <label class="facet-checkbox-label sex-option-label" data-sex="hombres">
+                <input type="checkbox" name="filterSex" value="hombres" checked>
+                <span class="custom-checkbox"></span>
+                <span class="facet-name">
+                  <span class="sex-pill sex-hombres">Hombres</span>
+                  <span class="event-label-text">Población masculina y grupos quinquenales</span>
+                </span>
+                <span class="facet-count" id="count-sex-hombres">19</span>
+              </label>
+            </div>
+          </div>
+
+        </div><!-- fin .sidebar-scroll-content -->
+
+        <!-- PIE MÓVIL DEL SIDEBAR -->
+        <div class="sidebar-footer-mobile">
+          <button type="button" class="btn-apply-filters-mobile" id="btnApplyFiltersMobile"
+            title="Aplicar filtros y cerrar panel">
+            <span class="btn-apply-text">Ver <strong id="mobileCountBadge">80</strong> variables</span>
+            <span class="btn-apply-action">Cerrar ✕</span>
           </button>
-          <button type="button" class="btn-close-sidebar" id="btnCloseSidebar" title="Cerrar panel de filtros" aria-label="Cerrar filtros">
-            ✕
-          </button>
-        </div>
-      </div>
-
-      <!-- CONTENEDOR CON SCROLL DE SECCIONES DE FILTROS -->
-      <div class="sidebar-scroll-content">
-
-      <!-- SELECTOR DE ÁMBITO GEOGRÁFICO -->
-      <div class="filter-section">
-        <span class="filter-title">Ámbito Territorial</span>
-        <div class="territory-toggle">
-          <label class="territory-option" id="labelTerritoryMun">
-            <input type="radio" name="territoryRadio" value="mun" checked id="radioMun">
-            <span class="territory-pill">
-              <span class="icon">
-                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
-                  <path d="M3 21h18" />
-                  <path d="M5 21V10l7-5 7 5v11" />
-                  <path d="M9 14h6" />
-                </svg>
-              </span>
-              <span class="text">Municipio de Morelia</span>
-              <span class="tag">4 eventos</span>
-            </span>
-          </label>
-          <label class="territory-option" id="labelTerritoryLoc">
-            <input type="radio" name="territoryRadio" value="loc" id="radioLoc">
-            <span class="territory-pill">
-              <span class="icon">
-                <svg class="ui-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
-                  <rect x="4" y="2" width="16" height="20" rx="2" />
-                  <line x1="9" y1="6" x2="9" y2="6.01" />
-                  <line x1="15" y1="6" x2="15" y2="6.01" />
-                  <line x1="9" y1="10" x2="9" y2="10.01" />
-                  <line x1="15" y1="10" x2="15" y2="10.01" />
-                  <line x1="9" y1="14" x2="9" y2="14.01" />
-                  <line x1="15" y1="14" x2="15" y2="14.01" />
-                  <path d="M10 22v-4h4v4" />
-                </svg>
-              </span>
-              <span class="text">Ciudad de Morelia</span>
-              <span class="tag">3 eventos</span>
-            </span>
-          </label>
-        </div>
-      </div>
-
-      <!-- FILTRO PRINCIPAL: DISPONIBILIDAD TEMPORAL (# DE EVENTOS) -->
-      <div class="filter-section">
-        <div class="filter-title-row">
-          <span class="filter-title">Disponibilidad Temporal</span>
         </div>
 
-        <div class="facet-options" id="eventCountFilters">
-          <label class="facet-checkbox-label">
-            <input type="checkbox" name="filterEventCount" value="4" checked>
-            <span class="custom-checkbox"></span>
-            <span class="facet-name">
-              <span class="event-pill event-4">4 Eventos</span>
-              <span class="event-label-text">Serie Completa (2010 a 2025)</span>
-            </span>
-            <span class="facet-count" id="count-ev-4">12</span>
-          </label>
-
-          <label class="facet-checkbox-label">
-            <input type="checkbox" name="filterEventCount" value="3" checked>
-            <span class="custom-checkbox"></span>
-            <span class="facet-name">
-              <span class="event-pill event-3">3 Eventos</span>
-              <span class="event-label-text">Tres eventos censales</span>
-            </span>
-            <span class="facet-count" id="count-ev-3">35</span>
-          </label>
-
-          <label class="facet-checkbox-label">
-            <input type="checkbox" name="filterEventCount" value="2" checked>
-            <span class="custom-checkbox"></span>
-            <span class="facet-name">
-              <span class="event-pill event-2">2 Eventos</span>
-              <span class="event-label-text">Dos eventos censales</span>
-            </span>
-            <span class="facet-count" id="count-ev-2">16</span>
-          </label>
-
-          <label class="facet-checkbox-label">
-            <input type="checkbox" name="filterEventCount" value="1" checked>
-            <span class="custom-checkbox"></span>
-            <span class="facet-name">
-              <span class="event-pill event-1">1 Evento</span>
-              <span class="event-label-text">Exclusivas / Nuevas (2025)</span>
-            </span>
-            <span class="facet-count" id="count-ev-1">17</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- FILTRO POR EVENTOS ESPECÍFICOS PRESENTES -->
-      <div class="filter-section">
-        <span class="filter-title">Presencia en Censos / Encuestas</span>
-        <div class="year-badges-filter" id="yearCheckboxes">
-          <label class="year-filter-chip">
-            <input type="checkbox" name="filterYear" value="2010">
-            <span class="year-chip-box">Censo 2010</span>
-          </label>
-          <label class="year-filter-chip">
-            <input type="checkbox" name="filterYear" value="2015">
-            <span class="year-chip-box">Encuesta 2015</span>
-          </label>
-          <label class="year-filter-chip">
-            <input type="checkbox" name="filterYear" value="2020">
-            <span class="year-chip-box">Censo 2020</span>
-          </label>
-          <label class="year-filter-chip">
-            <input type="checkbox" name="filterYear" value="2025">
-            <span class="year-chip-box">Encuesta 2025</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- FILTRO POR SUBSISTEMAS DE INFORMACIÓN -->
-      <div class="filter-section">
-        <div class="filter-title-row">
-          <span class="filter-title">Subsistemas de Información</span>
-          <span class="facet-category-count" id="categoriesCount">5 subsistemas</span>
-        </div>
-        <div class="categories-filter-list" id="categoriesFilterList">
-          <!-- Generado dinámicamente por app.js con conteos -->
-        </div>
-      </div>
-
-      <!-- FILTRO POR SEXO -->
-      <div class="filter-section" id="sexFilterSection">
-        <div class="filter-title-row">
-          <span class="filter-title">Filtro por sexo</span>
-        </div>
-
-        <div class="sex-filter-options" id="sexFilterOptions">
-          <label class="facet-checkbox-label sex-option-label" data-sex="total">
-            <input type="checkbox" name="filterSex" value="total" checked>
-            <span class="custom-checkbox"></span>
-            <span class="facet-name">
-              <span class="sex-pill sex-total">Total Ambos Sexos</span>
-              <span class="event-label-text">Población total y grupos combinados</span>
-            </span>
-            <span class="facet-count" id="count-sex-total">22</span>
-          </label>
-
-          <label class="facet-checkbox-label sex-option-label" data-sex="mujeres">
-            <input type="checkbox" name="filterSex" value="mujeres" checked>
-            <span class="custom-checkbox"></span>
-            <span class="facet-name">
-              <span class="sex-pill sex-mujeres">Mujeres</span>
-              <span class="event-label-text">Población femenina y grupos quinquenales</span>
-            </span>
-            <span class="facet-count" id="count-sex-mujeres">21</span>
-          </label>
-
-          <label class="facet-checkbox-label sex-option-label" data-sex="hombres">
-            <input type="checkbox" name="filterSex" value="hombres" checked>
-            <span class="custom-checkbox"></span>
-            <span class="facet-name">
-              <span class="sex-pill sex-hombres">Hombres</span>
-              <span class="event-label-text">Población masculina y grupos quinquenales</span>
-            </span>
-            <span class="facet-count" id="count-sex-hombres">19</span>
-          </label>
-        </div>
-      </div>
-
-      </div><!-- fin .sidebar-scroll-content -->
-
-      <!-- PIE MÓVIL DEL SIDEBAR -->
-      <div class="sidebar-footer-mobile">
-        <button type="button" class="btn-apply-filters-mobile" id="btnApplyFiltersMobile" title="Aplicar filtros y cerrar panel">
-          <span class="btn-apply-text">Ver <strong id="mobileCountBadge">80</strong> variables</span>
-          <span class="btn-apply-action">Cerrar ✕</span>
-        </button>
-      </div>
- 
-    </aside>
+      </aside>
 
     </div><!-- fin .sidebar-column -->
 
@@ -394,9 +367,9 @@
       <!-- TOOLBAR DE RESULTADOS Y ORDENAMIENTO -->
       <div class="catalog-toolbar">
         <div class="toolbar-left">
-          <button type="button" class="btn-toggle-sidebar" id="btnToggleSidebar" aria-label="Abrir o cerrar filtros">
+          <button type="button" class="btn-toggle-sidebar" id="btnToggleSidebar" aria-label="Mostrar o cerrar filtros">
             <span class="btn-toggle-icon">☰</span>
-            <span class="btn-toggle-text">Filtros</span>
+            <span class="btn-toggle-text">Mostrar Filtros</span>
           </button>
           <div class="results-stats">
             <span class="count-highlight" id="resultsCount">80</span>
